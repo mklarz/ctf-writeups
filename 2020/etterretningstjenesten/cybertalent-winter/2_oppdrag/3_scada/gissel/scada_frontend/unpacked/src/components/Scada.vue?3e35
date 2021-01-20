@@ -1,0 +1,8 @@
+import { render } from "./Scada.vue?vue&type=template&id=acc7b6d4&bindings={\"msg\":\"props\",\"ws\":\"data\",\"json_data\":\"data\",\"flag\":\"data\",\"fetchdata\":\"options\"}"
+import script from "./Scada.vue?vue&type=script&lang=js"
+export * from "./Scada.vue?vue&type=script&lang=js"
+
+import "./Scada.vue?vue&type=style&index=0&lang=css"
+script.render = render
+
+export default script

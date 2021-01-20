@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package proto;
+
+message NewGameRequest {}
+
+message Position {
+  int32 row = 1;
+  int32 column = 2;
+}
+
+message NewGameResponse {
+  string levelID = 1;
+  string error = 2;
+}
+
+message StartLevelRequest {
+  string levelID = 1;
+}
+
+message StartLevelResponse {
+  int32 Rows = 1;
+  int32 Columns = 2;
+  int32 Mines = 3;
+  string error = 4;
+}
+
+message ClickRequest {
+  string levelID = 1;
+  Position tile = 2;
+}
+
+message ClickResponse {
+  int32 value = 1;
+  string error = 2;
+}
+
+message SolveLevelRequest {
+  string levelID = 1;
+  repeated Position mines = 2;
+}
+
+message SolveLevelResponse {
+  string nextLevelID = 1;
+  string flag = 2;
+  string error = 3;
+}
+
+
+service Minesweeper {
+  rpc NewGame(NewGameRequest) returns(NewGameResponse);
+  rpc StartLevel(StartLevelRequest) returns(StartLevelResponse);
+  rpc Click(ClickRequest) returns(ClickResponse);
+  rpc SolveLevel(SolveLevelRequest) returns(SolveLevelResponse);
+}

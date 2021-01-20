@@ -1,0 +1,8 @@
+import { render } from "./App.vue?vue&type=template&id=afb43d78&bindings={}"
+import script from "./App.vue?vue&type=script&lang=js"
+export * from "./App.vue?vue&type=script&lang=js"
+
+import "./App.vue?vue&type=style&index=0&lang=css"
+script.render = render
+
+export default script

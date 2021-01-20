@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" android:compileSdkVersion="29" android:compileSdkVersionCodename="10" package="no.cybertalent.liberatortoolkit" platformBuildVersionCode="29" platformBuildVersionName="10">
+    <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="29"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <application android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:allowBackup="true" android:supportsRtl="true" android:extractNativeLibs="false" android:usesCleartextTraffic="true" android:roundIcon="@mipmap/ic_launcher_round" android:appComponentFactory="androidx.core.app.CoreComponentFactory">
+        <activity android:name="no.cybertalent.liberatortoolkit.EditActivity"/>
+        <activity android:name="no.cybertalent.liberatortoolkit.VaultActivity"/>
+        <activity android:name="no.cybertalent.liberatortoolkit.ChatActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="no.cybertalent.liberatortoolkit.TunerActivity"/>
+        <activity android:name="no.cybertalent.liberatortoolkit.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

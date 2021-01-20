@@ -1,0 +1,8 @@
+import { render } from "./Tile.vue?vue&type=template&id=18ca6d05&bindings={\"state\":\"props\"}"
+import script from "./Tile.vue?vue&type=script&lang=js"
+export * from "./Tile.vue?vue&type=script&lang=js"
+
+import "./Tile.vue?vue&type=style&index=0&lang=css"
+script.render = render
+
+export default script
