@@ -29,6 +29,8 @@ Each challenge category have their own more detailed write-up (`DETAILED.md`) co
             - [3.1.3_math_1](./3_utfordringer/1_lett/math/README.md#313_math_1)
             - [3.1.3_math_2](./3_utfordringer/1_lett/math/README.md#313_math_2)
         - [3.1.4_rusty_reversing_easy](./3_utfordringer/1_lett/rust_lett/README.md)
+        - [3.1.8_punchcard](./3_utfordringer/1_lett/punchcard/README.md)
+        - [3.1.9_secret](./3_utfordringer/1_lett/secret/README.md)
 
     - [3.2. Utfordringer middels](./3_utfordringer/2_middels/README.md) - [[_Detailed version_]](./3_utfordringer/2_middels/DETAILED.md)
         - [3.2.1_coordinate](./3_utfordringer/2_middels/coordinate/README.md)
@@ -59,7 +61,6 @@ Each challenge category have their own more detailed write-up (`DETAILED.md`) co
         - [3.4.8_transfer.root](./3_utfordringer/4_umulig/README.md#348_transfer_root)
 - [**9. Gammelt**](./9_gammelt/README.md)
 - [**9000. Madness**](./9000_madness)
-    - [0_horse](./9000_madness/0_horse/README.md)
     - [2_seatheworld_bookings_bruteforcer](./9000_madness/2_seatheworld_bookings_bruteforcer/README.md)
     - [2_seatheworld_bookings_parser](./9000_madness/2_seatheworld_bookings_parser/README.md)
     - [2_seatheworld_data_set_downloader](./9000_madness/2_seatheworld_data_set_downloader/README.md)
@@ -3806,13 +3807,6 @@ Gratulerer, korrekt svar!
 ```
 
 # [9000. Madness](./9000_madness)
-## [0_horse](./9000_madness/0_horse/README.md)
-
-This resulted in no flag and is therefore here only to document the attempts.
-
-From the Norwegian Armed Force's page about the [Cybertalent Program](https://www.forsvaret.no/jobb/talentprogram-cyberoperasjoner) we find the following image, and notice the dots on the horse, which look like old [punch cards](https://en.wikipedia.org/wiki/Punched_card).
-
-![aa8ba51c503042c48257d4944ec668c6](./9000_madness/0_horse/screenshots/aa8ba51c503042c48257d4944ec668c6.jpg)
 
 ## [2_seatheworld_bookings_bruteforcer](./9000_madness/2_seatheworld_bookings_bruteforcer)
 
