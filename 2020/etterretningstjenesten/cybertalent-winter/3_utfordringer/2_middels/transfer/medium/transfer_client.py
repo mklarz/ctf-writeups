@@ -2,10 +2,10 @@ import os
 import sys
 import base64
 from pwn import *
-from arc4 import ARC4
+from Crypto.Cipher import ARC4
 
 
-DEBUG = False
+DEBUG = True
 
 """
 Header:
@@ -180,7 +180,7 @@ class Client:
             instruction = INSTRUCTION_LIST_FILES
         elif i == INSTRUCTION_SUCCESS: # i = 12
             self.current_encrypted += packet.body
-            self.arc4 = ARC4(self.rc4_key)
+            self.arc4 = ARC4.new(self.rc4_key)
             decrypted = self.arc4.decrypt(self.current_encrypted)
             cleaned = decrypted.replace(self.last_decrypt, b"")
             self.last_decrypt = decrypted
