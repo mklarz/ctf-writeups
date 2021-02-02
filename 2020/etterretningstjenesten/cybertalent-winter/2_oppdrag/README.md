@@ -163,7 +163,7 @@ We now have have a username, name and a hashed password. After a quick Google se
 Plotting the credentials into the app and scrolling through the channels we get some different audio for Channel 7, a robotic woman repeating the phrase:
 > Your flag is london underscore calling.
 
-The `data.mp3` file can be found [here](./1_bedrag/1/data.mp3).
+The `data.mp3` file can be found [here](./1_beslag/1/data.mp3).
 
 ---
 
@@ -545,7 +545,7 @@ And after launching Vault we see that `undo` function has been called:
 (agent) [8769892465034] Return Value: [100,101,120,10,48,51,53,0,79,-51,103,-12,27,...]
 
 ```
-Saving the return bytestream to a file, we get a `Dalvik dex file`, and can now decompile it with JADX. We see that this `extra` class has a `getData` function that accepts a String `str`, it appends the salt `y_so_salty` to the string and then generates a MD5, and a SHA256 hash out of the string. It then returns them both in the same output, in that order. The class and java source files can be found [here](.).
+Saving the return bytestream to a file, we get a `Dalvik dex file`, and can now decompile it with JADX. We see that this `extra` class has a `getData` function that accepts a String `str`, it appends the salt `y_so_salty` to the string and then generates a MD5, and a SHA256 hash out of the string. It then returns them both in the same output, in that order. The class and java source files can be found [here](./1_beslag/3).
 
 ```java
 public class extra {
@@ -656,7 +656,7 @@ We now have everything we need to find the PIN and decrypt the files in the Vaul
 
 We now use [Frida](https://frida.re/) again to automate our solution flow. We could go even further with this script by launching the Vault view automatically, and executing the unlock, instead of just outputting the PIN.
 
-###### [`frida-vault.js`](./1_beslag/3/frida-vault.py)
+###### [`frida-vault.js`](./1_beslag/3/frida-vault.js)
 
 ```js
 // --- snip ---
@@ -976,7 +976,7 @@ Knowing that we can view the data sets, we take a closer look at the `IBMUSER.SE
    **End**                                                                      
 ```
 
-We input `SELECT C` (a copy of the source code can be found [here](../../9000_madness/2_seatheworld_data_set_downloader/datasets/IBMUSER.SEATW.SRC(C))) and find the source code of the booking application. Most interesting is the `SKIP_FLAG` definition on line #5 and the IF statement on line #317 that stops the `print_flag()` function from executing.
+We input `SELECT C` (a copy of the source code can be found [here](../9000_madness/2_seatheworld_data_set_downloader/datasets/IBMUSER.SEATW.SRC(C))) and find the source code of the booking application. Most interesting is the `SKIP_FLAG` definition on line #5 and the IF statement on line #317 that stops the `print_flag()` function from executing.
 
 ```c
 000005 #define SKIP_FLAG 1    

@@ -5,7 +5,7 @@ Each challenge category have their own more detailed write-up (`DETAILED.md`) co
 
 ## Challenges
 - [**1. Grunnleggende**](./1_grunnleggende/README.md)
-    - [1.5_nettverk](./1_grunnleggende#/README.md15_nettverk)
+    - [1.5_nettverk](./1_grunnleggende/README.md#md15_nettverk)
 - [**2. Oppdrag**](./2_oppdrag/README.md) - [[_Detailed version_]](./2_oppdrag/DETAILED.md)
     - [2.1_beslag](./2_oppdrag/1_beslag/README.md)
         - [2.1_beslag_1](./2_oppdrag/1_beslag/1/README.md)
@@ -65,10 +65,10 @@ Each challenge category have their own more detailed write-up (`DETAILED.md`) co
     - [2_seatheworld_bookings_parser](./9000_madness/2_seatheworld_bookings_parser/README.md)
     - [2_seatheworld_data_set_downloader](./9000_madness/2_seatheworld_data_set_downloader/README.md)
 
-# 1. Grunnleggende
+# [1. Grunnleggende](./1_grunnleggende)
 Having completed last years CTF, these challenges (except **1.5_nettverk**) were copy paste from my notes. You can find more information regarding the challenges in these write-ups [Sithis](https://github.com/williamsolem/Etjenesten-Cybertalent-CTF-Writeup), [Agent Random](https://blog.agentrandom.com/cybertalent-ctf/), [zig](https://www.indregard.no/2020/03/e-tjenestens-ctf/), [UnblvR](https://github.com/myrdyr/ctf-writeups/tree/master/etjenesten20), or [SgtSIGSEGV](https://blog.mrfjo.org/2020/03/02/NIS-Cybertalent).
 
-### 1.5_nettverk
+### [1.5_nettverk](./1_grunnleggende#15_nettverk)
 Simple Python networking challenge. More information on Python socket programming can be found in the official Python documentation [here](https://docs.python.org/3/howto/sockets.html) and [here](https://docs.python.org/3/library/socket.html).
 
 
@@ -263,7 +263,7 @@ We now have have a username, name and a hashed password. After a quick Google se
 Plotting the credentials into the app and scrolling through the channels we get some different audio for Channel 7, a robotic woman repeating the phrase:
 > Your flag is london underscore calling.
 
-The `data.mp3` file can be found [here](./2_oppdrag/1_bedrag/1/data.mp3).
+The `data.mp3` file can be found [here](./2_oppdrag/1_beslag/1/data.mp3).
 
 ---
 
@@ -810,7 +810,7 @@ And after launching Vault we see that `undo` function has been called:
 (agent) [8769892465034] Return Value: [100,101,120,10,48,51,53,0,79,-51,103,-12,27,...]
 
 ```
-Saving the return bytestream to a file, we get a `Dalvik dex file`, and can now decompile it with JADX. We see that this `extra` class has a `getData` function that accepts a String `str`, it appends the salt `y_so_salty` to the string and then generates a MD5, and a SHA256 hash out of the string. It then returns them both in the same output, in that order. The class and java source files can be found [here](.).
+Saving the return bytestream to a file, we get a `Dalvik dex file`, and can now decompile it with JADX. We see that this `extra` class has a `getData` function that accepts a String `str`, it appends the salt `y_so_salty` to the string and then generates a MD5, and a SHA256 hash out of the string. It then returns them both in the same output, in that order. The class and java source files can be found [here](./2_oppdrag/1_beslag/3).
 
 ```java
 public class extra {
@@ -930,7 +930,7 @@ We now have everything we need to find the PIN and decrypt the files in the Vaul
 
 We now use [Frida](https://frida.re/) again to automate our solution flow. We could go even further with this script by launching the Vault view automatically, and executing the unlock, instead of just outputting the PIN.
 
-###### [`frida-vault.js`](./2_oppdrag/1_beslag/3/frida-vault.py)
+###### [`frida-vault.js`](./2_oppdrag/1_beslag/3/frida-vault.js)
 
 ```js
 const zeroPad = (num, places) => String(num).padStart(places, '0')
@@ -1543,7 +1543,7 @@ Knowing that we can view the data sets, we take a closer look at the `IBMUSER.SE
    **End**                                                                      
 ```
 
-We input `SELECT C` (a copy of the source code can be found [here](../../9000_madness/2_seatheworld_data_set_downloader/datasets/IBMUSER.SEATW.SRC(C))) and find the source code of the booking application. Most interesting is the `SKIP_FLAG` definition on line #5 and the IF statement on line #317 that stops the `print_flag()` function from executing.
+We input `SELECT C` (a copy of the source code can be found [here](./9000_madness/2_seatheworld_data_set_downloader/datasets/IBMUSER.SEATW.SRC(C))) and find the source code of the booking application. Most interesting is the `SKIP_FLAG` definition on line #5 and the IF statement on line #317 that stops the `print_flag()` function from executing.
 
 ```c
 000005 #define SKIP_FLAG 1
@@ -1565,7 +1565,7 @@ We input `SELECT C` (a copy of the source code can be found [here](../../9000_ma
 000327 } 
 ```
 
-We also dump the other data sets, you can find them [here](../9000_madness/2_seatheworld_data_set_downloader/datasets).
+We also dump the other data sets, you can find them [here](./9000_madness/2_seatheworld_data_set_downloader/datasets).
 
 ---
 
@@ -2394,6 +2394,202 @@ Gratulerer, korrekt svar!
 ```
 
 
+### [3.1.8_punchcard](./3_utfordringer/1_lett/punchcard)
+
+**Note:** I solved this challenge after the CTF.
+
+From the Norwegian Armed Force's page about the [Cybertalent Program](https://www.forsvaret.no/jobb/talentprogram-cyberoperasjoner) we find the following image, and notice the dots on the horse, which look like old [punch cards](https://en.wikipedia.org/wiki/Punched_card).
+
+<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/1_lett/punchcard/screenshots/aa8ba51c503042c48257d4944ec668c6.jpg" width="200">
+
+---
+
+#### Highlighting
+After performing some image manipulation as an attempt to highlight the boxes even more, we notice very similar boxes to the left of the horse.
+
+<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/1_lett/punchcard/screenshots/0d0635a3f3c84b739bd8c1e1753b3f3a.png" width="200">
+
+
+<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/1_lett/punchcard/screenshots/8059be00ce994061a3591b59280878b1.png" width="200">
+
+---
+
+#### Pattern
+There seemed to be a repeating pattern, and when drawing columns and rows we see that there are 12 rows, and repeating pattern every 11 column.
+
+<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/1_lett/punchcard/screenshots/2c25ea0e7af34f8c8ed560f06feba606.png" width="200">
+
+---
+
+#### Big
+Attempting to do the same to the boxes on the horse, we see that the same pattern exists there, albeit the last rows are offset a bit.
+
+<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/1_lett/punchcard/screenshots/d09997bbf7de419a821c012168acd412.png" width="200">
+
+<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/1_lett/punchcard/screenshots/d77edc61b2c2434c91d02077d4555db1.png" width="200">
+
+<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/1_lett/punchcard/screenshots/78d904ffcc7c46feb99a87fc1b1e7890.png" width="200">
+
+---
+
+#### Grid
+Further processing gives us the following grid.
+
+<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/1_lett/punchcard/screenshots/02690c59e3a04ad19386517575d35b09.png" width="100">
+
+<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/1_lett/punchcard/screenshots/02690c59e3a04ad19386517575d35b09.png" width="100">
+
+|   	    | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11	|
+|--------|---|---|---|---|---|---|---|---|---|----|----|
+| **12** | X |   | X | X | X | X |   |   | X | X  | X 	|
+| **11** |   | X	|   |   | X |   | X | X | X |    | X 	|
+| **0**  |   | X	| X | X |   |   |   | X |   | X  |   	|
+| **1**  |   |  	|   |   |   |   |   |   |   |    |   	|
+| **2**  |   |  	|   |   |   |   |   |   |   |    |   	|
+| **3**  |   |  	|   |   |   |   |   |   |   |    |   	|
+| **4**  |   | X	|   |   |   |   | X | X |   |    |   	|
+| **5**  |   |  	|   |   | X |   |   |   | X |    | X  |
+| **6**  |   |  	|   |   |   |   |   |   |   |    |   	|
+| **7**  |   |  	| X |   |   |   |   |   |   |    |   	|
+| **8** 	| X |  	|   |   |   |   |   |   |   |    |   	|
+| **9** 	|   |  	|   | X |   |   |   |   |   | X  |   	|
+
+#### IBM-EBCDIC
+
+We find that this pattern matches the IBM-EBCDIC punch cards.
+
+> Before ASCII became the standard, many of the internal codes used to represent characters within computers were strongly influenced by the punched card code for characters. One of the most famous of such codes, and one that has persisted in use the longest, is, of course, EBCDIC (Extended Binary-Coded Decimal Interchange Code). The diagram below illustrates the relationship between EBCDIC and punched card code:
+>
+> <img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/1_lett/punchcard/screenshots/diagram.gif" width="200">
+> 
+> [Source](http://quadibloc.com/comp/cardint.htm)
+
+Now map the columns and rows to 0s and 1s, depending on where it's punched (X).
+
+|   	    | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11	|
+|--------|---|---|---|---|---|---|---|---|---|----|----|
+| **12** | 1 | 0 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 1  | 1 	|
+| **11** | 0 | 1	| 0 | 0 | 1 | 0 | 1 | 1 | 1 | 0  | 1 	|
+| **0**  | 0 | 1	| 1 | 1 | 0 | 0 | 0 | 1 | 0 | 1  | 0 	|
+| **1**  | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0  | 0 	|
+| **2**  | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0  | 0 	|
+| **3**  | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0  | 0 	|
+| **4**  | 0 | 0	| 0 | 0 | 0 | 0 | 1 | 1 | 0 | 0  | 0 	|
+| **5**  | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0  | 1  |
+| **6**  | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0  | 0 	|
+| **7**  | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0  | 0 	|
+| **8** 	| 1 | 0	| 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0  | 0 	|
+| **9** 	| 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 1  | 0 	|
+
+Extracting each column into a list gives us the following:
+```
+1.  100000000010
+2.  011000100000
+3.  101000000100
+4.  101000000001
+5.  110000010000
+6.  100000000000
+7.  010000100000
+8.  011000100000
+9.  110000010000
+10. 101000000001
+11. 110000010000
+```
+
+Adding them togheter gives us this string: `100000000010011000100000101000000100101000000001110000010000100000000000010000100000011000100000110000010000101000000001110000010000`
+
+It should now be easy to map the column and rows to their characters, we therefore write a parser that does this for us and with that solve the challenge. We also see that the generated card matches the grid we found in the horse.
+
+```sh
+$ python parse_ibm-ebcdic.py code --generate-card 100000000010011000100000101000000100101000000001110000010000100000000000010000100000011000100000110000010000101000000001110000010000
+Output: Hugin&Munin
+```
+
+
+<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/1_lett/punchcard/screenshots/solve.png" width="200">
+
+
+[Huginn and Muninn](https://en.wikipedia.org/wiki/Huginn_and_Muninn) are two ravens that brought information to the most powerful Norse god, Odin. They can see every little movement on the earth, they hear every sound, and then they report back to Odin. That's the reason we can find the ravens in the Coat of Arms for the Norwegian Intelligence Service (Etteretningstjenesten).
+
+
+<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/1_lett/punchcard/screenshots/etterretningstjenesten-logo.png" width="200">
+
+You can also find them on the [frontpage of the CTF](https://ctf.cybertalent.no/).
+
+<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/1_lett/punchcard/screenshots/pixelravn.gif" width="200">
+
+
+```
+login@corax:~$ scoreboard 'Hugin&Munin'
+Kategori: 3.1. Utfordringer lett
+Oppgave:  3.1.8_punchcard
+Svar:     Hugin&Munin
+
+Gratulerer, korrekt svar!
+```
+
+##### More fun
+The script also allows us the create our own cards.
+
+```sh
+$ python parse_ibm-ebcdic.py --generate-card text 'Hello, thi$ is IBM-EBCDIC punch c@rd from [2021]'
+
+100000000010101000010000110001000000110001000000110000001000001001000010000000000000011001000000101000000010101000000001010001000010000000000000101000000001011010000000000000000000100000000001100010000000010000100000010000000000100000010000100010000000100001000000100000100000100000000001100001000000000000000000110000000100011000100000110000010000101001000000101000000010000000000000101001000000000000100010110000000001101000100000000000000000101000001000110000000001110000001000110000100000000000000000100010000010000010000000001000000000000010000000000100000000001010000010
+```
+
+<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/1_lett/punchcard/screenshots/hello_2021.png" width="200">
+
+```
+$ python parse_ibm-ebcdic.py --generate-card text klarz
+Output: 110010000000110001000000101100000000110000000001011000000001
+
+
+$ python parse_ibm-ebcdic.py code 110010000000110001000000101100000000110000000001011000000001
+Output: klarz
+```
+
+<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/1_lett/punchcard/screenshots/klarz.png" width="200">
+
+
+###### [`parse_ibm-ebcdic.py`](./3_utfordringer/1_lett/punchcard/parse_ibm-ebcdic.py)
+
+
+
+### [3.1.9_secret](./3_utfordringer/1_lett/secret)
+
+**Note:** I solved this "challenge" after the CTF.
+
+From the Norwegian Armed Force's page about the [Cybertalent Program](https://www.forsvaret.no/jobb/talentprogram-cyberoperasjoner) we find the following image, that contains some shell commands. We see that a file was moved to /dev/shm, and find the secret there.
+
+<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/1_lett/rust_lett/screenshots/aa8ba51c503042c48257d4944ec668c6.jpg" width="200">
+
+```
+login@corax:~$ ls -altr /dev/shm/
+total 4
+drwxr-xr-x 5 root root 340 Jan 21 15:45 ..
+-rw-r--r-- 1 root root  33 Jan 21 15:45 .secret
+drwxrwxrwt 2 root root  60 Jan 21 15:45 .
+login@corax:~$ cat /dev/shm/.secret
+7238876002abdfd7f091fa8978cbadee
+```
+
+```
+login@corax:~$ scoreboard 7238876002abdfd7f091fa8978cbadee
+Kategori: 3.1. Utfordringer lett
+Oppgave:  3.1.9_secret
+Svar:     7238876002abdfd7f091fa8978cbadee
+
+Gratulerer, korrekt svar!
+```
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3174,7 +3370,7 @@ With the nodes and their edges mapped, we can now generate our own graphs:
 Knowing that the problem is NP-Complete we can attempt to brute force the solution, and after some searching we find [this method](
 https://gist.github.com/mikkelam/ab7966e7ab1c441f947b) and add it to the final code.
 
-###### [solve_2.py](./3_utfordringer/3_vanskelig/euler/2/solve_2.py)
+##### [solve_2.py](./3_utfordringer/3_vanskelig/euler/2/solve_2.py)
 
 ```python
 import networkx as nx

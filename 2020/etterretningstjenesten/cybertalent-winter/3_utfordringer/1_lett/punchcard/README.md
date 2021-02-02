@@ -115,6 +115,16 @@ You can also find them on the [frontpage of the CTF](https://ctf.cybertalent.no/
 
 ![pixelravn.gif](./screenshots/pixelravn.gif)
 
+
+```
+login@corax:~$ scoreboard 'Hugin&Munin'
+Kategori: 3.1. Utfordringer lett
+Oppgave:  3.1.8_punchcard
+Svar:     Hugin&Munin
+
+Gratulerer, korrekt svar!
+```
+
 ### More fun
 The script also allows us the create our own cards.
 

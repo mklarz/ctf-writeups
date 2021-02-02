@@ -1,6 +1,6 @@
 # 3.3.1_euler_3
 
-<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/3_vanskelig/euler/finn_n/screenshots/a154454b37f14c5cb0e31bb606158a52.png" width="300">
+<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/3_vanskelig/euler/2/screenshots/a154454b37f14c5cb0e31bb606158a52.png" width="300">
 
 ## `h`
 

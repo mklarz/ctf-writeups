@@ -1,6 +1,6 @@
 # 3.3.1_euler_1
 
-<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/3_vanskelig/euler/euler/screenshots/598ffa7704b3426e82aca79ff2f28875.png" width="300">
+<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/3_vanskelig/euler/1/screenshots/598ffa7704b3426e82aca79ff2f28875.png" width="300">
 
 Simple challenge where we are supposed to calculate each equation separately and use the results (ASCII charactercodes) to concat them into a string. I used Python, [SageMath](https://www.sagemath.org/), [SymPy](https://www.sympy.org/en/index.html) (for Eulers Polynomial), and some mathematical principles.
 
