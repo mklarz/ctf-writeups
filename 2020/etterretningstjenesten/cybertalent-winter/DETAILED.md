@@ -1,5 +1,13 @@
 # Etteretningstjenesten - Cybertalent - Winter 2020 ([Simple version](./README.md))
 
+<p align="center">
+<img src="https://raw.githubusercontent.com/mklarz/ctf-writeups/main/2020/etterretningstjenesten/cybertalent-winter/3_utfordringer/1_lett/punchcard/screenshots/pixelravn.gif" width="200"><img src="https://mklarz.github.io/cybertalent2020-winter-highscore/static/bug.gif" width="175">
+</p>
+
+The Norwegian Intelligence Service (NIS) or Etterretningstjenesten (E-tjenesten) held a CTF for their Cybertalent program. 
+
+The final highscore list can be found [here](https://mklarz.github.io/cybertalent2020-winter-highscore/).
+
 # 0. Preface
 Each challenge category have their own more detailed write-up (`DETAILED.md`) containing more theory, information, code and resources than the simplified write-up (`README.md`). You can find the detailed version in the title of every category. Below is a list of all the challenges and the links to them for easy access. The entire write-up can be found below this list.
 
